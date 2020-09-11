@@ -10,7 +10,7 @@
     height: 83px;
     left: 0px;
     top: 0px;
-    background: aquamarine;
+    background: purple;
 }
 .itemMenu{
     font-size: 30px;
@@ -18,5 +18,5 @@
     float: right;
     margin-top: 20px;
     text-decoration: none;
-    color: black;
+    color: white;
 }

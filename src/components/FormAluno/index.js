@@ -1,65 +1,66 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './FormAluno.css';
 
+export default class FormAluno extends Component {
 
-export default class FormAluno extends Component{
-
-    constructor(props){
-        super(props);
-        this.ra="";
-        this.nome="";
-        this.codCurso=0;
-    }
-    handlerMudancaInput(evento){
-        console.log(evento.target.id);
-        console.log(evento.target.values);
-        this.ra = evento.target.id === 'ra' ? evento.target.value : this.ra;
-        this.nome = evento.target.id === 'nome' ? evento.target.value : this.nome;
-        this.codCurso = evento.target.id === 'codCurso' ? evento.target.value : this.codCurso;
-            console.log("ra:" + this.ra);
-            console.log("nome:" + this.nome);
-            console.log("codCurso" + this.codCurso);
-    }
-    criarAluno(evento){
-        evento.preventDefault();
-        evento.stopPropagation();
-        if(!this.ra || !this.nome || !this.codCurso)
-            return this.props.criarAluno(this.ra, this.nome, this.codCurso);
+    constructor(props) {
+       super(props);
+       this.ra = "";
+       this.nome = "";
+       this.codCurso = 0;
     }
 
-    render(){
-        return(
-            <div className="inclui-container">
-                <h1>Inclusão de Alunos</h1>
-                <form className="formAluno" 
-                  onSubmit={this.criarAluno.bind(this)}>
-                    <label>Ra:</label>
-                    <input
-                        type="text"
-                        id="ra"
-                        placeholder="Ra do aluno"
-                        className="form-input"
-                        onChange={this.handlerMudancaInput.bind(this)}
-                    />
-                    <label>Nome:</label>
-                    <input
-                        type="text"
-                        id="nome"
-                        placeholder="Nome do aluno"
-                        className="form-input"
-                        onChange={this.handlerMudancaInput.bind(this)}
-                    />
-                    <label>Código do Curso</label>
-                    <input
-                        type="text"
-                        id="codCurso"
-                        placeholder="Código do curso do aluno"
-                        className="form-input"
-                        onChange={this.handlerMudancaInput.bind(this)}
-                    />
-                    <button className="btnInserir">Inserir</button>
-                </form>
-            </div>
-        )
-    }
+   handleMundancaInput(evento){
+      console.log(evento.target.id);
+      console.log(evento.target.value);
+      this.ra = evento.target.id === 'ra' ?
+            evento.target.value : this.ra; // testamos se os dados estão vindo do campo RA
+      this.nome = evento.target.id === 'nome' ?
+           evento.target.value : this.nome;
+      this.codCurso = evento.target.id === 'codCurso' ?
+           evento.target.value : this.codCurso; 
+        console.log("RA: " + this.ra);
+        console.log("Nome: " + this.nome);
+        console.log("codCurso: " + this.codCurso);
+   }
+
+   criarAluno(evento) {
+       evento.preventDefault();
+       evento.stopPropagation();
+       if(!this.ra || !this.nome || !this.codCurso) return  
+       this.props.criarAluno(this.ra, this.nome, this.codCurso);
+   }
+
+  render() {
+      return (
+          <div className="inclui-container">
+              <h1>Inclusão de Alunos</h1>
+              <form className="formulario-aluno" onSubmit={this.criarAluno.bind(this)}>
+
+                  <label> Ra: </label>
+                  <input type="text"
+                         id="ra"
+                         placeholder="RA do aluno"
+                         className="form-input"
+                         onChange={this.handleMundancaInput.bind(this)} />
+
+                   <label>Nome:</label>
+                   <input type="text"
+                          id="nome"
+                          placeholder="Nome do aluno"
+                          className="form-input"
+                          onChange={this.handleMundancaInput.bind(this)} />
+
+                  <label>Código do curso: </label>
+                  <input type="text"
+                         id="codCurso"
+                         placeholder="Código do curso do aluno"
+                         className="form-input"
+                         onChange={this.handleMundancaInput.bind(this)} />  
+
+                   <button className="btnInserir">Inserir</button>           
+              </form>
+          </div>
+      )
+  }
 }

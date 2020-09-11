@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Menu from './components/Menu';
 import ListagemAlunos from './components/ListagemAlunos';
-//importar o rodapé
+import Rodape from './components/footer';
 import FormAluno from './components/FormAluno';
 
 class App extends Component{
@@ -34,6 +34,7 @@ class App extends Component{
           <ListagemAlunos alunos={this.alunos}/>
           <FormAluno criarAluno={this.criarAluno.bind(this)}/>
         </div>
+        <Rodape/>
       </div>
     )
   }
